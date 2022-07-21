@@ -18,7 +18,8 @@ const app = express()
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.json());
 app.use(cors());
-app.use(`/.netlify/functions/api`, router);
+//app.use(`/.netlify/functions/api`, router);
+app.use(`/.netlify/functions/api`);
 
 
 app.get('/', function(req, res) {
@@ -37,6 +38,7 @@ async function resolveMetadata(req) {
 }
 
 app.get('/:token_id', async function (req, res) {
+  console.log('trying')
   const metadata = await resolveMetadata(req);
   if (metadata) res.send(metadata);
   else res.sendStatus(404);
