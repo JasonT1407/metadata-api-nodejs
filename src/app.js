@@ -18,13 +18,12 @@ const app = express()
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.json());
 app.use(cors());
-//app.use(`/.netlify/functions/api`, router);
-app.use(`/.netlify/functions/api`);
 
 
 app.get('/', function(req, res) {
   res.send('OpenSea API ready for Diddy Dinos!');
 })
+
 async function resolveMetadata(req) {
   try {
     const tokenId = parseInt(req.params.token_id).toString();
@@ -37,7 +36,7 @@ async function resolveMetadata(req) {
   }
 }
 
-app.get('/:token_id', async function (req, res) {
+app.get('/test/:token_id', async function (req, res) {
   console.log('trying')
   const metadata = await resolveMetadata(req);
   if (metadata) res.send(metadata);
@@ -47,6 +46,8 @@ app.get('/:token_id', async function (req, res) {
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 })
+//app.use(`/.netlify/functions/api`, router);
+app.use(`/.netlify/functions/api`);
 
 module.exports = app;
 module.exports.handler = serverless(app);
