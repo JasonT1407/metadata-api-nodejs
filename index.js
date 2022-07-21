@@ -17,7 +17,8 @@ const app = express()
 
 app.use(bodyParser.json());
 app.use(cors());
-app.use(enforce.HTTPS({ trustProtoHeader: true }))
+// remoe until ssl bought
+//app.use(enforce.HTTPS({ trustProtoHeader: true }))
 
 
 app.get('/', function(req, res) {
