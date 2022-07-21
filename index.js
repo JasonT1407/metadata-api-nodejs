@@ -21,7 +21,7 @@ app.use(enforce.HTTPS({ trustProtoHeader: true }))
 
 
 app.get('/', function(req, res) {
-  res.send('OpenSea API ready for Diddy Dinos!');
+  res.send('Diddy Dinos API!');
 })
 
 async function resolveMetadata(req) {
