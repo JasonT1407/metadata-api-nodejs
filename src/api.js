@@ -14,8 +14,6 @@ const app = express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
 
-// Static public files
-app.use(express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -47,7 +45,6 @@ app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 })
 
-//app.use(`/.netlify/functions/api`, router);
 
 module.exports = app;
 module.exports.handler = serverless(app);
