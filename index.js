@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path')
 const fetch = require('node-fetch');
 var bodyParser = require('body-parser');
+const cors = require('cors');
 
 const PORT = process.env.PORT || 5000
 
@@ -13,6 +14,9 @@ const app = express()
 // Static public files
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.json());
+app.use(cors());
+
+
 app.get('/', function(req, res) {
   res.send('OpenSea API ready for Diddy Dinos!');
 })
