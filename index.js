@@ -6,6 +6,7 @@ const router = express.Router();
 const encoding = require('encoding');
 var bodyParser = require('body-parser');
 const cors = require('cors');
+var enforce = require('express-sslify');
 
 const PORT = process.env.PORT || 5000
 
@@ -44,6 +45,8 @@ app.get('/:token_id', async function (req, res) {
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 })
+app.use(enforce.HTTPS({ trustProtoHeader: true }))
+
 
 
 module.exports = app;
