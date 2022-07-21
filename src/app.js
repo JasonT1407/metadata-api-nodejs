@@ -3,7 +3,7 @@ const path = require('path');
 const fetch = require('node-fetch');
 const serverless = require('serverless-http');
 const router = express.Router();
-
+const encoding = require('encoding');
 var bodyParser = require('body-parser');
 const cors = require('cors');
 
