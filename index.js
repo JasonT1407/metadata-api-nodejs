@@ -17,6 +17,7 @@ const app = express()
 
 app.use(bodyParser.json());
 app.use(cors());
+app.use(enforce.HTTPS({ trustProtoHeader: true }))
 
 
 app.get('/', function(req, res) {
@@ -45,7 +46,6 @@ app.get('/:token_id', async function (req, res) {
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 })
-app.use(enforce.HTTPS({ trustProtoHeader: true }))
 
 
 
