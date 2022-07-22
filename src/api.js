@@ -30,14 +30,11 @@ async function resolveMetadata(req) {
     const metadataURI = `https://diddydinos.blob.core.windows.net/metadata/${tokenId}.json`;
     const response = await fetch(metadataURI);
     if (response.status < 400) return response.json();
-    return "banana";
+    return null;
   } catch (e) {
     return null;
   }
 }
-router.get('/another', (req, res) => res.json({
-  route: req.originalUrl
-}));
 
 router.get('/test', function(req, res) {
   res.send('This test page works!');
@@ -46,8 +43,9 @@ router.get('/test', function(req, res) {
 router.get('/:token_id', async function (req, res) {
   console.log('trying')
   const metadata = await resolveMetadata(req);
-  if (metadata) res.send(metadata);
-  else res.sendStatus(404);
+  if (metadata) res.send('metadata');
+  else res.send(404);
+//  else res.sendStatus(404);
 });
 
 app.listen(app.get('port'), function() {
