@@ -54,7 +54,8 @@ router.get('/:token_id', async function (req, res) {
 //  console.log('Node app is running on port', app.get('port'));
 //})
 
-app.use(`/.netlify/functions/api`, router);
+app.use(`/`, router);
+//app.use(`/.netlify/functions/api`, router);
 //app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
 
 module.exports = app;
