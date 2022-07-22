@@ -30,7 +30,7 @@ async function resolveMetadata(req) {
     const metadataURI = `https://diddydinos.blob.core.windows.net/metadata/${tokenId}.json`;
     const response = await fetch(metadataURI);
     if (response.status < 400) return response.json();
-    return null;
+    return response.status;
   } catch (e) {
     return null;
   }
