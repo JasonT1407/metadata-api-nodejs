@@ -47,9 +47,9 @@ router.get('/:token_id', async function (req, res) {
   else res.sendStatus(404);
 });
 
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
-})
+//app.listen(app.get('port'), function() {
+//  console.log('Node app is running on port', app.get('port'));
+//})
 
 app.use(`/.netlify/functions/api`, router);
 
