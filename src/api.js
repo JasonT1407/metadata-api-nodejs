@@ -35,6 +35,9 @@ async function resolveMetadata(req) {
     return null;
   }
 }
+router.get('/another', (req, res) => res.json({
+  route: req.originalUrl
+}));
 
 router.get('/test', function(req, res) {
   res.send('This test page works!');
