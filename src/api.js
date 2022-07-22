@@ -41,6 +41,8 @@ router.get('/test', function(req, res) {
 })
 
 router.get('/:token_id', async function (req, res) {
+  const tokenId = parseInt(req.params.token_id).toString();
+  res.send(tokenId);
   const metadata = await resolveMetadata(req);
   res.send(metadata);
   if (metadata) res.send(metadata);
