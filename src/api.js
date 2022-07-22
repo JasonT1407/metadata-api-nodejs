@@ -21,7 +21,7 @@ app.use(cors());
 //app.use(enforce.HTTPS({ trustProtoHeader: true }))
 
 
-router.get('/', function(req, res) {
+app.get('/', function(req, res) {
   res.send('This API works!');
 })
 
@@ -36,18 +36,22 @@ async function resolveMetadata(req) {
     return null;
   }
 }
-router.get('/test', function(req, res) {
+
+app.get('/test', function(req, res) {
   res.send('This test page works!');
 })
 
-router.get('/:token_id', async function (req, res) {
+app.get('/:token_id', async function (req, res) {
   console.log('trying')
   const metadata = await resolveMetadata(req);
   if (metadata) res.send(metadata);
   else res.sendStatus(404);
 });
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+})
+//app.use(`/.netlify/functions/api`, router);
 
-app.use(`/.netlify/functions/api`, router);
 
 module.exports = app;
 module.exports.handler = serverless(app);
