@@ -27,8 +27,7 @@ router.get('/', function(req, res) {
 async function resolveMetadata(req) {
   try {
     const tokenId = parseInt(req.params.token_id).toString();
-    const metadataURI = `https://diddydinos.blob.core.windows.net/metadata/${tokenId}.json`;
-    return metadataURI
+    const metadataURI = `https://diddydinos.blob.core.windows.net/metadata/1.json`;
     const response = await fetch(metadataURI);
     if (response.status < 400) return response.json();
     return null;
