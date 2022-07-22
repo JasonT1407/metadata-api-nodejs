@@ -41,11 +41,11 @@ router.get('/test', function(req, res) {
 })
 
 router.get('/:token_id', async function (req, res) {
-  console.log('trying')
+  res.send(console.log('trying'))
+
   const metadata = await resolveMetadata(req);
-  if (metadata) res.send('metadata');
-  else res.send(404);
-//  else res.sendStatus(404);
+  if (metadata) res.send(metadata);
+  else res.sendStatus(404);
 });
 
 app.listen(app.get('port'), function() {
