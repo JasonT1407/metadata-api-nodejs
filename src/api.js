@@ -52,7 +52,7 @@ app.listen(app.get('port'), function() {
 })
 
 app.use(`/.netlify/functions/api`, router);
-app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.js')));
+app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
 
 module.exports = app;
 module.exports.handler = serverless(app);
