@@ -22,7 +22,7 @@ app.use(cors());
 
 
 router.get('/', function(req, res) {
-  res.send('Diddy Dinos API!');
+  res.send('This API works!');
 })
 
 async function resolveMetadata(req) {
@@ -36,6 +36,9 @@ async function resolveMetadata(req) {
     return null;
   }
 }
+router.get('/test', function(req, res) {
+  res.send('This test page works!');
+})
 
 router.get('/:token_id', async function (req, res) {
   console.log('trying')
@@ -45,8 +48,6 @@ router.get('/:token_id', async function (req, res) {
 });
 
 app.use(`/.netlify/functions/api`, router);
-
-
 
 module.exports = app;
 module.exports.handler = serverless(app);
