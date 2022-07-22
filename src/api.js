@@ -6,7 +6,7 @@ const router = express.Router();
 const encoding = require('encoding');
 var bodyParser = require('body-parser');
 const cors = require('cors');
-var enforce = require('express-sslify');
+//var enforce = require('express-sslify');
 
 const PORT = process.env.PORT || 5000
 
