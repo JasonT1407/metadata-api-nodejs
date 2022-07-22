@@ -17,8 +17,6 @@ const app = express()
 
 app.use(bodyParser.json());
 app.use(cors());
-router.use(bodyParser.json());
-router.use(cors());
 // remove until ssl bought
 //app.use(enforce.HTTPS({ trustProtoHeader: true }))
 
@@ -50,13 +48,11 @@ router.get('/:token_id', async function (req, res) {
   else res.sendStatus(404);
 });
 
-//app.listen(app.get('port'), function() {
-//  console.log('Node app is running on port', app.get('port'));
-//})
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+})
 
 app.use(`/`, router);
-//app.use(`/.netlify/functions/api`, router);
-//app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
 
 module.exports = app;
 module.exports.handler = serverless(app);
