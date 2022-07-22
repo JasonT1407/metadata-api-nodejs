@@ -33,7 +33,7 @@ async function resolveMetadata(req) {
     if (response.status < 400) return response.json();
     return null;
   } catch (e) {
-    return null;
+    return 'null';
   }
 }
 
