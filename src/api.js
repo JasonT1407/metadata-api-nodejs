@@ -41,9 +41,8 @@ router.get('/test', function(req, res) {
 })
 
 router.get('/:token_id', async function (req, res) {
-  res.send('trying');
-
   const metadata = await resolveMetadata(req);
+  res.send(metadata);
   if (metadata) res.send(metadata);
   else res.sendStatus(404);
 });
