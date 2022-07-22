@@ -16,7 +16,7 @@ const app = express()
   .set('view engine', 'ejs')
 
 app.use(bodyParser.json());
-//app.use(cors());
+app.use(cors());
 // remove until ssl bought
 //app.use(enforce.HTTPS({ trustProtoHeader: true }))
 
