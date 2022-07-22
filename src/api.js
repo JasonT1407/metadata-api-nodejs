@@ -26,6 +26,7 @@ router.get('/', function(req, res) {
 
 async function resolveMetadata(req) {
   try {
+    res.send('banana')
     const tokenId = parseInt(req.params.token_id).toString();
     const metadataURI = `https://diddydinos.blob.core.windows.net/metadata/${tokenId}.json`;
     const response = await fetch(metadataURI);
@@ -41,17 +42,14 @@ router.get('/test', function(req, res) {
 })
 
 router.get('/:token_id', async function (req, res) {
-  const tokenId = parseInt(req.params.token_id).toString();
-  res.send(tokenId);
   const metadata = await resolveMetadata(req);
-  res.send(metadata);
   if (metadata) res.send(metadata);
   else res.sendStatus(404);
 });
 
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
-})
+//app.listen(app.get('port'), function() {
+//  console.log('Node app is running on port', app.get('port'));
+//})
 
 app.use(`/.netlify/functions/api`, router);
 //app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
