@@ -56,8 +56,6 @@ app.listen(app.get('port'), function() {
 
 app.use(`/.netlify/functions/api`, router);
 app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
-app.use('/test', (req, res) => res.sendFile(path.join(__dirname, '../index.html/test')));
-app.use('/:token_id', (req, res) => res.sendFile(path.join(__dirname, '../index.html/token:id')));
 
 module.exports = app;
 module.exports.handler = serverless(app);
