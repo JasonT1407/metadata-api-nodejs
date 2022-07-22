@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const fetch = require('node-fetch');
+const axios = require('axios');
 const serverless = require('serverless-http');
 const router = express.Router();
 const encoding = require('encoding');
@@ -28,8 +29,9 @@ async function resolveMetadata(req) {
   try {
     const tokenId = parseInt(req.params.token_id).toString();
     const metadataURI = `https://diddydinos.blob.core.windows.net/metadata/${tokenId}.json`;
-    const response = await fetch(metadataURI);
-    if (response.status < 400) return response.json();
+    const response = await axios(metadataURI);
+    console.log(response);
+    if (response.status < 400) return response.data;
     return null;
   } catch (e) {
     return null;
