@@ -45,7 +45,10 @@ router.get('/test', function(req, res) {
 router.get('/:token_id', async function (req, res) {
   const metadata = await resolveMetadata(req);
   if (metadata) res.send(metadata);
-  else res.sendStatus(404);
+//unauthorized
+  else res.sendStatus(401);
+// not found
+// else res.sendStatus(401);
 });
 
 app.listen(app.get('port'), function() {
